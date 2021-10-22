@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  DK_Q,    DK_W,    DK_E,    DK_R,    DK_T,    DK_Y,    DK_U,    DK_I,    DK_O,    DK_P,    KC_BSPC,
     KC_ESC,  DK_A,    DK_S,    DK_D,    DK_F,    DK_G,    DK_H,    DK_J,    DK_K,    DK_L,    DK_AE,   DK_OSTR,
     KC_LSFT, DK_Z,    DK_X,    DK_C,    DK_V,    DK_B,    DK_N,    DK_M,    DK_COMM, DK_DOT,  DK_MINS, KC_ENT ,
-    KC_LCTRL,KC_LWIN, FUNC,    KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_LCTRL,KC_LWIN, KC_ALGR, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Colemak
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  DK_Q,    DK_W,    DK_F,    DK_P,    DK_B,    DK_J,    DK_L,    DK_U,    DK_Y,    DK_DIAE, KC_BSPC,
     KC_ESC,  DK_A,    DK_R,    DK_S,    DK_T,    DK_G,    DK_M,    DK_N,    DK_E,    DK_I,    DK_O,    DK_QUOT,
     KC_LSFT, DK_Z,    DK_X,    DK_C,    DK_D,    DK_V,    DK_K,    DK_H,    DK_COMM, DK_DOT,  DK_MINS, KC_ENT ,
-    KC_LCTRL,KC_LWIN, FUNC,    KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_LCTRL,KC_LWIN, KC_ALGR, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Lower
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Adjust (Lower + Raise)
  *                      v------------------------RGB CONTROL--------------------v
  * ,-----------------------------------------------------------------------------------.
- * |      | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
+ * | EEPRM| Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
+    EEPROM_RESET, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
     _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK,  _______, _______,  _______,
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, AU_TOG,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
@@ -164,10 +164,10 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_AA, DK_ARNG),
 };
 
-#ifdef AUDIO_ENABLE
+/* #ifdef AUDIO_ENABLE
   float plover_song[][2]     = SONG(PLOVER_SOUND);
   float plover_gb_song[][2]  = SONG(PLOVER_GOODBYE_SOUND);
-#endif
+#endif */
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
@@ -205,29 +205,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    // case FN:
-    //   if (record->event.pressed) {
-    //     #ifdef AUDIO_ENABLE
-    //       stop_all_notes();
-    //       PLAY_SONG(plover_song);
-    //     #endif
-    //     layer_off(_RAISE);
-    //     layer_off(_LOWER);
-    //     layer_off(_ADJUST);
-    //     layer_on(_FN);
-    //     if (!eeconfig_is_enabled()) {
-    //         eeconfig_init();
-    //     }
-    //     keymap_config.raw = eeconfig_read_keymap();
-    //     keymap_config.nkro = 1;
-    //     eeconfig_update_keymap(keymap_config.raw);
-    //   }
-    //   return false;
-    //   break;
+    /* case FN:
+      if (record->event.pressed) {
+        #ifdef AUDIO_ENABLE
+          stop_all_notes();
+          PLAY_SONG(plover_song);
+        #endif
+        layer_off(_RAISE);
+        layer_off(_LOWER);
+        layer_off(_ADJUST);
+        layer_on(_FN);
+        if (!eeconfig_is_enabled()) {
+            eeconfig_init();
+        }
+        keymap_config.raw = eeconfig_read_keymap();
+        keymap_config.nkro = 1;
+        eeconfig_update_keymap(keymap_config.raw);
+      }
+      return false;
+      break; */
     case EXT_PLV:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_gb_song);
+          // PLAY_SONG(plover_gb_song);
         #endif
         layer_off(_FN);
       }
@@ -284,12 +284,16 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 #endif
             if (active) {
 #ifdef AUDIO_ENABLE
-                if (play_sound) { PLAY_SONG(plover_song); }
+                if (play_sound) { 
+                  /*PLAY_SONG(plover_song);*/ 
+                }
 #endif
                 layer_on(_ADJUST);
             } else {
 #ifdef AUDIO_ENABLE
-                if (play_sound) { PLAY_SONG(plover_gb_song); }
+                if (play_sound) { 
+                  /*PLAY_SONG(plover_gb_song);*/ 
+                }
 #endif
                 layer_off(_ADJUST);
             }
@@ -309,24 +313,24 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 }
 
 void matrix_scan_user(void) {
-#ifdef AUDIO_ENABLE
-    if (muse_mode) {
-        if (muse_counter == 0) {
-            uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
-            if (muse_note != last_muse_note) {
-                stop_note(compute_freq_for_midi_note(last_muse_note));
-                play_note(compute_freq_for_midi_note(muse_note), 0xF);
-                last_muse_note = muse_note;
-            }
-        }
-        muse_counter = (muse_counter + 1) % muse_tempo;
-    } else {
-        if (muse_counter) {
-            stop_all_notes();
-            muse_counter = 0;
-        }
-    }
-#endif
+  #ifdef AUDIO_ENABLE
+      if (muse_mode) {
+          if (muse_counter == 0) {
+              uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
+              if (muse_note != last_muse_note) {
+                  stop_note(compute_freq_for_midi_note(last_muse_note));
+                  play_note(compute_freq_for_midi_note(muse_note), 0xF);
+                  last_muse_note = muse_note;
+              }
+          }
+          muse_counter = (muse_counter + 1) % muse_tempo;
+      } else {
+          if (muse_counter) {
+              stop_all_notes();
+              muse_counter = 0;
+          }
+      }
+  #endif
 }
 
 bool music_mask_user(uint16_t keycode) {
