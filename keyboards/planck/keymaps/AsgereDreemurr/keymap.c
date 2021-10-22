@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   -  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |  OS  |  FN  | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * | Ctrl |  OS  | AlGr | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
@@ -69,13 +69,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |   -  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |  OS  |  FN  | Alt  |Lower |    Space    | Raise | Left | Down |  Up  |Right |
+ * | Ctrl |  OS  |  FN  | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_planck_grid(
-    KC_TAB,  DK_Q,    DK_W,    DK_F,    DK_P,    DK_G,    DK_J,    DK_L,    DK_U,    DK_Y,    DK_DIAE, KC_BSPC,
-    KC_ESC,  DK_A,    DK_R,    DK_S,    DK_T,    DK_D,    DK_H,    DK_N,    DK_E,    DK_I,    DK_O,    DK_QUOT,
-    KC_LSFT, DK_Z,    DK_X,    DK_C,    DK_V,    DK_B,    DK_K,    DK_M,    DK_COMM, DK_DOT,  DK_SLSH, KC_ENT ,
+    KC_TAB,  DK_Q,    DK_W,    DK_F,    DK_P,    DK_B,    DK_J,    DK_L,    DK_U,    DK_Y,    DK_DIAE, KC_BSPC,
+    KC_ESC,  DK_A,    DK_R,    DK_S,    DK_T,    DK_G,    DK_M,    DK_N,    DK_E,    DK_I,    DK_O,    DK_QUOT,
+    KC_LSFT, DK_Z,    DK_X,    DK_C,    DK_D,    DK_V,    DK_K,    DK_H,    DK_COMM, DK_DOT,  DK_MINS, KC_ENT ,
     KC_LCTRL,KC_LWIN, FUNC,    KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
@@ -87,31 +87,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Home | PgDn | PgUp | End  |
+ * |      |      |      |      | [ON] |             |      | Home | PgDn | PgUp | End  |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
     DK_SECT, DK_EXLM, DK_DQUO, DK_HASH, DK_PERC, DK_AMPR, DK_SLSH, DK_LPRN, DK_RPRN, DK_EQL,  DK_QUES,  DK_GRV , 
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______, _______, _______,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, _______, _______, _______,
+    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |   ½  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |   ½  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  +   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Del  |      |   /  |      |      |      |      |   {  |   (  |   )  |   }  |  *   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  <   |      |      |      |      |      |      |   [  |   ]  |   ;  |      |
+ * |      |  <   |      |      |      |      |      |      |   [  |   ]  |   ;  |  ´   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Mute | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
-    DK_HALF, DK_1,    DK_2,    DK_3,    DK_4,    DK_5,    DK_6,    DK_7,    DK_8,    DK_9,    DK_0,    KC_BSPC,
-    KC_DEL,  _______, DK_SLSH, _______, _______, _______, _______, DK_LCBR, DK_LPRN, DK_RPRN, DK_RCBR, DK_ASTR,
-    _______, DK_LABK, _______, _______, _______, _______, _______, _______, DK_LBRC, DK_RBRC, DK_SCLN, _______,
+    DK_HALF, DK_1,    DK_2,    DK_3,    DK_4,    DK_5,    DK_6,    DK_7,    DK_8,    DK_9,    DK_0,    DK_PLUS,
+    KC_DEL,  XXXXXXX, DK_SLSH, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DK_LCBR, DK_LPRN, DK_RPRN, DK_RCBR, DK_ASTR,
+    _______, DK_LABK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, DK_LBRC, DK_RBRC, DK_SCLN, DK_ACUT,
     _______, _______, _______, _______, _______, _______, _______, _______, KC__MUTE,KC__VOLDOWN, KC__VOLUP, KC_MEDIA_PLAY_PAUSE
 ),
 
@@ -195,7 +195,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           backlight_step();
         #endif
         #ifdef KEYBOARD_planck_rev5
-          writePinLow(E6);
+          writePinLow(E6);      
         #endif
       } else {
         unregister_code(KC_RSFT);
@@ -205,25 +205,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case FN:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          stop_all_notes();
-          PLAY_SONG(plover_song);
-        #endif
-        layer_off(_RAISE);
-        layer_off(_LOWER);
-        layer_off(_ADJUST);
-        layer_on(_FN);
-        if (!eeconfig_is_enabled()) {
-            eeconfig_init();
-        }
-        keymap_config.raw = eeconfig_read_keymap();
-        keymap_config.nkro = 1;
-        eeconfig_update_keymap(keymap_config.raw);
-      }
-      return false;
-      break;
+    // case FN:
+    //   if (record->event.pressed) {
+    //     #ifdef AUDIO_ENABLE
+    //       stop_all_notes();
+    //       PLAY_SONG(plover_song);
+    //     #endif
+    //     layer_off(_RAISE);
+    //     layer_off(_LOWER);
+    //     layer_off(_ADJUST);
+    //     layer_on(_FN);
+    //     if (!eeconfig_is_enabled()) {
+    //         eeconfig_init();
+    //     }
+    //     keymap_config.raw = eeconfig_read_keymap();
+    //     keymap_config.nkro = 1;
+    //     eeconfig_update_keymap(keymap_config.raw);
+    //   }
+    //   return false;
+    //   break;
     case EXT_PLV:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
