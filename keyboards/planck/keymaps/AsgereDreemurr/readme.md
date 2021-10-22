@@ -11,9 +11,9 @@ The following keys have a certain functionality:
 
 ## Development
 Build firmware  
-`qmk compile`  
+`qmk compile -kb planck/rev6_drop -km AsgereDreemurr`
 
 Flash keyboard  
-`qmk flash`
+`qmk flash -kb planck/rev6_drop -km AsgereDreemurr`
 
 ---
