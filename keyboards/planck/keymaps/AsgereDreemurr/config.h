@@ -47,3 +47,8 @@
 
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
+
+#define PITCH_STANDARD_A 440.0f
+
+#define AUDIO_CLICKY
+#define COMBO_COUNT 3
