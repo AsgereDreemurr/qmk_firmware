@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	* ,-----------------------------------------------------------------------------------.
 	* | EEPRM| Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
 	* |------+------+------+------+------+------+------+------+------+------+------+------|
-	* |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|      |      |      |
+	* |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|      | CMBo | CMBx |
 	* |------+------+------+------+------+------+------+------+------+------+------+------|
 	* |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|TermOn|TermOf|      |Click |      |
 	* |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	*/
 	[_ADJUST] = LAYOUT_planck_1x2uC(
 		EEP_RST, RESET, 	DEBUG, 	 RGB_TOG,  RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL, 
-		KC_TRNS, KC_TRNS, MU_MOD,  AU_ON, 	 AU_OFF, 	KC_TRNS, KC_TRNS, QWERTY,  COLEMAK,  KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, MU_MOD,  AU_ON, 	 AU_OFF, 	KC_TRNS, KC_TRNS, QWERTY,  COLEMAK,  KC_TRNS, CMB_OFF, CMB_ON, 
 		KC_TRNS, MUV_DE, 	MUV_IN,  MU_ON, 	 MU_OFF, 	MI_ON, 	 MI_OFF, 	TERM_ON, TERM_OFF, KC_TRNS, CK_TOGG, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS
 	)
