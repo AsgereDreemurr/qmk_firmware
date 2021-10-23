@@ -1,3 +1,21 @@
+/* Copyright 2015-2021 Jack Humbert
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+ // Guide: https://docs.qmk.fm/#/newbs_building_firmware
+
 #include QMK_KEYBOARD_H
 
 enum planck_layers {
@@ -7,6 +25,12 @@ enum planck_layers {
   _RAISE,
   _FN,
   _ADJUST
+};
+
+enum planck_keycodes {
+  QWERTY = SAFE_RANGE,
+  COLEMAK,
+  FN,
 };
 
 // Layers
@@ -34,27 +58,28 @@ enum planck_layers {
 #define DK_EQL  LSFT(KC_0)    // =
 #define DK_QUES LSFT(KC_MINS) // ?
 #define DK_SCLN LSFT(KC_COMM)	// ;
+#define DK_TICK LSFT(KC_EQL)	// `
 
 // Alt-Gr keys
-#define DK_AT RALT(KC_2) 			// @
-#define DK_PND RALT(KC_3)			// £
-#define DK_DOL RALT(KC_4)			// $
-#define DK_EUR RALT(KC_5)			// €
-#define DK_PIPE ALT(KC_EQL)		// |
+#define DK_AT   RALT(KC_2)    // @
+#define DK_PND  RALT(KC_3)		// £
+#define DK_DOL  RALT(KC_4)		// $
+#define DK_EUR  RALT(KC_5)		// €
+#define DK_PIPE RALT(KC_EQL)	// |
 #define DK_LCBR RALT(KC_7)    // {
 #define DK_LPRN LSFT(KC_8)		// (
 #define DK_RPRN LSFT(KC_9)		// )
 #define DK_RCBR RALT(KC_0)		// }
-#define DK_ASTX LSFT(KC_NUHS)	// *
+#define DK_ASTX LSFT(KC_NUHS)	// asterisk
 #define DK_LBRC RALT(KC_8)		// [
 #define DK_RBRC RALT(KC_9)		// ]
 #define DK_BSLH RALT(KC_NUBS)	// backslash
 #define DK_TILD RALT(KC_RBRC) // ~
 
 // Combos
-const uint16_t PROGMEM combo_AE[] = {DK_A, DK_E, COMBO_END};
-const uint16_t PROGMEM combo_OE[] = {DK_E, DK_O, COMBO_END};
-const uint16_t PROGMEM combo_AA[] = {DK_A, DK_W, COMBO_END};
+const uint16_t PROGMEM combo_AE[] = {KC_A, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_OE[] = {KC_E, KC_O, COMBO_END};
+const uint16_t PROGMEM combo_AA[] = {KC_A, KC_W, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_AE, DK_AE),
     COMBO(combo_OE, DK_OE),
@@ -94,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	*/
 	[_COLEMAK] = LAYOUT_planck_1x2uC(
 		KC_TAB, 	KC_Q, 		KC_W, 	KC_F, 		KC_P, 	KC_B, 	KC_J, 	KC_L, 	 KC_U, 		KC_Y, 	KC_RBRC, KC_BSPC, 
-		KC_ESC, 	KC_A, 		KC_R, 	KC_S, 		KC_T, 	KC_G, 	KC_M, 	KC_N, 	 KC_TRNS, KC_I, 	KC_O, 	 KC_NUHS, 
+		KC_ESC, 	KC_A, 		KC_R, 	KC_S, 		KC_T, 	KC_G, 	KC_M, 	KC_N, 	 KC_E,    KC_I, 	KC_O, 	 KC_NUHS, 
 		KC_LSFT, 	KC_Z, 		KC_X, 	KC_C, 		KC_D, 	KC_V, 	KC_K, 	KC_H, 	 KC_COMM, KC_DOT, KC_SLSH, KC_ENT, 
 		KC_LCTL, 	KC_LGUI, 	FUNC, 	KC_LALT, 	LOWER, 	KC_SPC, RAISE, 	KC_LEFT, KC_DOWN, KC_UP, 	KC_RGHT
 	),
@@ -130,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	* `-----------------------------------------------------------------------------------'
 	*/
 	[_RAISE] = LAYOUT_planck_1x2uC(
-		DK_SECT, 	DK_EXLM, DK_DQUO,	DK_HASH, 	DK_CURR, 	DK_PERC, 	DK_AMPR, 	DK_SLSH, 	DK_LPRN, 	DK_RPRN, 	DK_EQL,	 DK_QUES, 
+		DK_SECT, 	DK_EXLM, DK_DQUO,	DK_HASH, 	DK_PERC, 	DK_AMPR, 	DK_SLSH, 	DK_LPRN, 	DK_RPRN, 	DK_EQL,	 DK_QUES,  DK_TICK,
 		KC_DEL,  	KC_NO, 	 DK_SLSH, KC_NO, 		KC_NO, 	 	KC_NO, 		KC_NO, 		DK_LCBR, 	DK_LPRN, 	DK_RPRN, 	DK_RCBR, DK_ASTX, 
 		KC_TRNS, 	KC_NUBS, KC_NO, 	KC_NO, 		KC_NO, 	 	KC_NO, 		KC_NO, 		KC_NO, 		DK_LBRC, 	DK_RBRC, 	DK_SCLN, KC_EQL, 
 		KC_TRNS, 	KC_TRNS, KC_TRNS, KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_MUTE, 	KC_VOLD, 	KC_VOLU, 	KC_MPLY
@@ -149,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	*/
 
 	[_FN] = LAYOUT_planck_1x2uC(
-		KC_TRNS, 	KC_NO,		DK_AT, 		DK_PND, 	DK_DOL, 	DK_EUR, 	KC_NO, 	 DK_LCBR, 		DK_LBRC, 	DK_RBRC, 	DK_LCBR, 	DK_PIPE, 
+		KC_TRNS, 	KC_NO,		DK_AT, 		DK_PND, 	DK_DOL, 	DK_EUR, 	KC_NO, 	 DK_LCBR, 		DK_LBRC, 	DK_RBRC, 	DK_RCBR, 	DK_PIPE, 
 		KC_TRNS, 	DK_AA, 	KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 	 	 KC_NO, 			DK_AE,		KC_NO, 	 	DK_OE,		DK_TILD, 
 		KC_TRNS, 	DK_BSLH, 	KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 	 RALT(KC_M), 	KC_NO,		KC_NO,		KC_NO,		KC_TRNS, 
 		KC_TRNS, 	KC_TRNS,	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_TRNS, KC_LEFT, 		KC_DOWN,	KC_UP,		KC_RGHT
@@ -169,12 +194,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	*/
 	[_ADJUST] = LAYOUT_planck_1x2uC(
 		EEP_RST, RESET, 	DEBUG, 	 RGB_TOG,  RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL, 
-		KC_TRNS, KC_TRNS, MU_MOD,  AU_ON, 	 AU_OFF, 	AG_NORM, AG_SWAP, QWERTY,  COLEMAK,  KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, MUV_DE, 	MUV_IN,  MU_ON, 	 MU_OFF, 	MI_ON, 	 MI_OFF, 	TERM_ON, TERM_OFF, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, MU_MOD,  AU_ON, 	 AU_OFF, 	KC_TRNS, KC_TRNS, QWERTY,  COLEMAK,  KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, MUV_DE, 	MUV_IN,  MU_ON, 	 MU_OFF, 	MI_ON, 	 MI_OFF, 	TERM_ON, TERM_OFF, KC_TRNS, CK_TOGG, KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS
 	)
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case QWERTY:
+      if (record->event.pressed) {
+        print("mode just switched to qwerty and this is a huge string\n");
+        set_single_persistent_default_layer(_QWERTY);
+      }
+      return false;
+      break;
+    case COLEMAK:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_COLEMAK);
+      }
+      return false;
+      break;
+  }
+  return true;
 }
