@@ -15,5 +15,3 @@ Build firmware
 
 Flash keyboard  
 `qmk flash -kb planck/rev6_drop -km AsgereDreemurr`
-
----
