@@ -77,7 +77,7 @@ enum planck_keycodes {
 #define DK_TILD RALT(KC_RBRC) // ~
 
 // Combos
-#define COMBO_COUNT 19
+
 const uint16_t PROGMEM combo_AE[] = {KC_A, KC_E, COMBO_END};
 const uint16_t PROGMEM combo_OE[] = {KC_E, KC_O, COMBO_END};
 const uint16_t PROGMEM combo_AA[] = {KC_A, KC_W, COMBO_END};
