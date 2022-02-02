@@ -180,17 +180,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	* ,-----------------------------------------------------------------------------------.
 	* |   §  |   !  |   "  |   #  |   %  |   &  |   /  |   (  |   )  |   =  |   ?  |  `   |
 	* |------+------+------+------+------+------+------+------+------+------+------+------|
-	* | Del  |      |   /  |      |      |      |      |   {  |   (  |   )  |   }  |  *   |
+	* | Del  |   (  |   /  |   )  |      |      |      |   {  |   [  |   ]  |   }  |  *   |
 	* |------+------+------+------+------+------+------+------+------+------+------+------|
-	* |      |  <   |      |      |      |      |      |      |   [  |   ]  |   ;  |  ´   |
+	* |      |  <   |   |  |   >  |      |      |      |      |      |      |   ;  |  ´   |
 	* |------+------+------+------+------+------+------+------+------+------+------+------|
 	* |      |      |      |      |      |             | [ON] | Mute | Vol- | Vol+ | Play |
 	* `-----------------------------------------------------------------------------------'
 	*/
 	[_RAISE] = LAYOUT_planck_grid(
-		DK_SECT, 	DK_EXLM, DK_DQUO,	DK_HASH, 	DK_PERC, 	DK_AMPR, 	DK_SLSH, 	DK_LPRN, 	DK_RPRN, 	DK_EQL,	 DK_QUES,  DK_TICK,
-		KC_DEL,  	KC_NO, 	 DK_SLSH, KC_NO, 		KC_NO, 	 	KC_NO, 		KC_NO, 		DK_LCBR, 	DK_LPRN, 	DK_RPRN, 	DK_RCBR, DK_ASTX, 
-		KC_TRNS, 	KC_NUBS, KC_NO, 	KC_NO, 		KC_NO, 	 	KC_NO, 		KC_NO, 		KC_NO, 		DK_LBRC, 	DK_RBRC, 	DK_SCLN, KC_EQL, 
+		DK_SECT, 	DK_EXLM, DK_DQUO,	DK_HASH, 			DK_PERC, 	DK_AMPR, 	DK_SLSH, 	DK_LPRN, 	DK_RPRN, 	DK_EQL,		DK_QUES,  DK_TICK,
+		KC_DEL,  	DK_LPRN, DK_SLSH, DK_RPRN, 			KC_NO, 	 	KC_NO, 		KC_NO, 		DK_LCBR, 	DK_LBRC, 	DK_RBRC, 	DK_RCBR, 	DK_ASTX, 
+		KC_TRNS, 	KC_NUBS, DK_PIPE, LSFT(KC_NUBS),KC_NO, 	 	KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 		KC_NO, 		DK_SCLN, 	KC_EQL, 
 		KC_TRNS, 	KC_TRNS, KC_TRNS, KC_TRNS, 	KC_TRNS,  KC_TRNS, 	KC_TRNS, 	KC_TRNS, 	KC_MUTE, 	KC_VOLD, 	KC_VOLU, 	KC_MPLY
 	),
 
